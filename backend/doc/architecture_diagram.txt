@@ -1,0 +1,27 @@
+@startuml PersonsCarsServiceArchitecture
+
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+package "Model" {
+    [person.py] <<model>>
+    [car.py] <<model>>
+}
+
+package "Service" {
+    [common_service.py] <<service>>
+}
+
+package "Tests" {
+    [test_person.py] <<automated test>>
+    [test_car.py] <<automated test>>
+}
+
+[common_service.py] -> [person.py]
+[common_service.py] -> [car.py]
+
+[test_person.py] --> [common_service.py]
+[test_car.py] --> [common_service.py]
+
+@enduml
